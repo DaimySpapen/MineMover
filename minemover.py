@@ -90,8 +90,7 @@ def switch_mods_to(folder):
 # Main GUI logic
 def main():
     if not os.path.exists(MINEMOVERT_DIR):
-        messagebox.showerror("Missing Folder", f"MineMover folder not found at:\n{MINEMOVERT_DIR}")
-        return
+        os.mkdir(MINEMOVERT_DIR)
 
     folders = get_mod_folders()
     if not folders:

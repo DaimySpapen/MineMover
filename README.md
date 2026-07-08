@@ -1,92 +1,36 @@
-# MineMover – Minecraft Mod Folder Switcher
+# Minemover - A small Minecraft mod switcher application
 
-**MineMover** is a small tool that helps you quickly swap between different sets of Minecraft mods. You can use it with a simple GUI or from the command line if you prefer.
+## How does it work?
+You just run the application and it should make a folder named "MineMover" in your Documents folder. If there are no mod folders, it will say that there are no mod folder found.
 
----
+If you make a folder named something like "1.21.1 Create Neo" it will show as "1.21.1 Create (Neoforge)" in MineMover. Click the name of the folder and select the big green button saying "Switch Mods".
 
-## 📁 What's in the repo
+MineMover then deletes the mods that are currently inside your .minectaft/mods folder and puts the mods from "1.21.1 Create Neo" inside of it.
 
-- `minemover.py` – GUI version (uses `tkinter`)
-- `minemover_cli.py` – CLI version
-- `minemover.exe` – Windows build (for non-Python users)
+(WARNING: make sure no important mods are inside your mods folder that aren't added with MineMover!!! MineMover does not care about your mods and deletes them.)
 
----
+## Windows defender blocked the .exe. Windows says...
+Yes, it will probally say something like "application comes from an untrusted publisher" or something. I can guarentee that the application doesn't steal your crypto coins, but if you don't trust me you can always build the .exe yourself if you have Python installed.
 
-## 🔧 What it does
+## How do i build the .exe myself?
+- Make sure you have [Python](https://www.python.org/downloads/) and [git](https://git-scm.com/install/windows) installed and added to system path. I only tested it with [Python 3.12](https://www.python.org/downloads/release/python-31210/) but it should work with any still supported Python version.
 
-- Replaces everything in your `.minecraft\mods` folder with a selected mod pack
-- Reads mod folders from `Documents\MineMover`
-- Tries to detect the modloader (like Forge, Fabric, etc.) based on folder naming
-- Works with or without a GUI
-- No extra libraries needed
-
----
-
-## 🖥️ How to use the GUI
-
-Just run:
-```bash
-python minemover.py
+- Clone this repo by running this in cmd or powershell:
+```powershell
+git clone https://github.com/DaimySpapen/MineMover.git
 ```
 
-Or double-click `minemover.exe` if you're on Windows and don't want to mess with Python.
-
-You'll see a list of your mod folders — pick one and click “Switch Mods.” That’s it.
-
----
-
-## 💻 How to use the CLI
-
-List your available mod folders:
-```bash
-python minemover_cli.py --list
-```
-
-Switch to a specific one:
-```bash
-python minemover_cli.py "1.20.1-create fa"
-```
-
----
-
-## ⚙️ Building a `.exe` (Optional)
-
-If you want to build a standalone Windows app:
-
-```bash
+- Make sure PyInstaller is installed by running this in cmd or powershell:
+```powershell
 pip install pyinstaller
+```
+
+- Then run:
+```powershell
 pyinstaller --onefile --windowed minemover.py
 ```
 
----
+- Check the dist folder in the same folder and there should be a single .exe file there. That's it, just run it and you're good to go.
 
-## 🧩 How folder naming works
-
-MineMover uses suffixes in folder names to detect which modloader it’s for. Here’s what it looks for:
-
-| Suffix | Modloader              |
-|--------|------------------------|
-| ` fa`  | Fabric                 |
-| ` fo`  | Forge                  |
-| ` neo` | NeoForge               |
-| ` qu`  | Quilt                  |
-| ` li`  | LiteLoader             |
-| ` ri`  | Rift                   |
-| ` rm`  | Risugami's ModLoader  |
-
-Example:  
-A folder called `1.20.1-create fa` will show up as “1.20.1-create” and be tagged as Fabric.
-
----
-
-## ✅ Requirements
-
-- Python 3.6 or newer (only needed if you're not using the `.exe`)
-
----
-
-## 📄 License
-
-MIT License – do whatever you want with it.
-
----
+# Disclaimer
+Yes i used AI in the making of this project. I wrote most of the code myself  but had the help of AI in the making of the UI and the CLI script. I also used AI in the old README, which is why i now rewrote it.
